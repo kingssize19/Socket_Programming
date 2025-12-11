@@ -13,8 +13,8 @@ Bu iletişim modelinde iki ana taraf bulunur:
   * Bağlantı taleplerini bekleyen taraftadır.
 
 **2. İstemci (Client) :**
-    * Diğer soket ise bağlantı kurmak için sunucuya "uzanır" (reach out).
-    * İletişimi başlatan taraftır.
+ * Diğer soket ise bağlantı kurmak için sunucuya "uzanır" (reach out).
+ * İletişimi başlatan taraftır.
 
 **Özetle :** Sunucu, dinleyici soketi oluşturur; İstemci ise sunucuya ulaşarak bağlantıyı başlatır.
 
