@@ -1,8 +1,8 @@
-gcc server.c -o server
-gcc client.c -o client
+#### gcc server.c -o server
+#### gcc client.c -o client
 
 
-Bir terminalde ./server başka terminalde ./client çalıştırın.
+#### Bir terminalde ./server başka terminalde ./client çalıştırın.
 
 ./server çıktısı :
 Istemciden gelen mesaj : Merhaba Sunucu! Ben Client.
