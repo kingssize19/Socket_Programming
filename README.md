@@ -171,9 +171,11 @@ send(sock, hello, strlen(hello), 0);          // Sunucuya gönder
 read(sock, buffer, 1024);                     // Sunucudan cevabı oku
 ```
 
-* **Buffer Temizliği :** C dilinde stringler "null-terminated" (\0) bitmelidir. **char buffer[\1024\] 
+* **Buffer Temizliği :** C dilinde stringler "null-terminated" (\0) bitmelidir. **char buffer\[1024\] = {0};** yaparak tüm diziyi baştan sıfırlamak, çöp verilerin ekrana basılmasını engeller.
+* **Port Kapatma :** Programı **CTRL+C** ile durdurduğunuzda soket hemen kapanmayabilir. **setsockopt** kullanmazsanız, tekrar çalıştırdığınızda birkaç dakika beklemeniz gerekebilir.
+* **Blocking vs Non-Blocking :** Standart soketler bloklayıcıdır (**read** veri gelene kadar bekler). Gerçek zamanlı oyunlar veya yüksek performanslı sunucular için "Non-blocking" soketler veya **select()**/**poll()** mekanizmaları kullanılır. 
 
-
+Bu yapı, internetin (HTTP, FTP, SMTP) çalışma mantığının en alt seviyesidir. Kendi chat uygulamanızı yazmak için bu temel üzerine döngüler (while(1)) ekleyerek sürekli mesajlaşmayı sağlayabilirsiniz.
 
 
 
