@@ -152,8 +152,26 @@ if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
     return -1;
 }
 ```
+* **inet_pton :** "Presentation to Network" anlamına gelir. "127.0.0.1" yazısını bilgisayarın anlayacağı 0 ve 1'lere çevirir.
+* **connect :** Sunucu tarafındaki **accept** ile el sıkışmayı (3-way handshake) tamamlar.
 
 
+## 5. Veri Alışverişi (Read / Send)
+Bağlantı kurulduktan sonra Linux/Unix sistemlerinde soketler dosya gibi davranır. **read** ve **write** (veya **send**/**recv**) kullanılabilir.
+
+**Sunucu :**
+```c
+read(new_socket, buffer, 1024);                // İstemciden geleni oku
+send(new_socket, hello, strlen(hello), 0);     // Cevap ver 
+```
+
+**İstemci :**
+```c
+send(sock, hello, strlen(hello), 0);          // Sunucuya gönder
+read(sock, buffer, 1024);                     // Sunucudan cevabı oku
+```
+
+* **Buffer Temizliği :** C dilinde stringler "null-terminated" (\0) bitmelidir. **char buffer[\1024\] 
 
 
 
