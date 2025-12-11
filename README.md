@@ -129,8 +129,29 @@ if ((new_socket = accept(server_fd, (struct sockaddr*)&address, (socklen_t*)&add
 
 ## 4. İstemci Tarafı (Client)
 
+Numarayı çevirip "Ara" tuşuna basmaktır.
 
+```c
+int sock = 0;
+struct sockaddr_in serv_addr;
 
+// Soket oluştur
+sock = socket(AF_INET, SOCK_STREAM, 0);
+
+serv_addr.sin_family = AF_INET;
+serv_addr.sin_port = htons(8080);
+
+// IP adresini (String: "127.0.0.1") binary formata çevir
+if (inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr) <= 0) {
+    printf("\nGecersiz Adres / Deskteklenmeyen Adres \n");
+    return -1;
+}
+
+if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
+    printf("\nBaglanti Hatasi \n");
+    return -1;
+}
+```
 
 
 
