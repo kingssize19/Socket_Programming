@@ -160,8 +160,14 @@ Ağ programlamada veri temizliği hayati önem taşır.
   * Terminalden veri girerken Enter tuşuna bastığınızda sona görünmez bir \n (yeni satır) karakteri eklenir. strcmp yaparken "cikis" ile "cikis\n" birbirine eşit değildir. Bu fonksiyon sondaki o \n karakterini bulur ve siler (null terminator \0 yapar).
 
 
+## 10. close()
 
+Bağlantıyı sonlandırır ve kaynakları işletim sistemine iade eder.
 
+```c
+close(new_socket); // İstemciyle olan özel görüşmeyi bitir.
+close(server_fd);  // Sunucuyu tamamen kapat (artık kimseyi dinleme).
+```
 
 
 
