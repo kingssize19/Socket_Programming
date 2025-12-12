@@ -43,11 +43,29 @@ setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
 5. **optlen (sizeof(opt)) :** **optval** verisinin boyutu.
 
 
+## 3. htons()
+
+Bu bir sistem çağrısı değil, bir yardımcı fonksiyonudur ama ağ programlamada zorunludur.
+
+```c
+address.sin_port = htons(PORT);
+```
+* **Sorun :** Bilgisayarlar (Intel/AMD işlemciler) sayıları bellekte **Little Endian** (Ters sırada) tutar. Ağ protokolleri ise **Big Endian** (Düz sırada) bekler.
+* **İşlevi :** 8080 sayısını alır, ağın anlayacağı bayt dizilimine çevirir. Eğer bunu yapmazsanız port numarası karşı tarafa bo 
 
 
+## 4. bind()
 
+Oluşturulan soketi (server_fd), fiziksel bir adres (IP) ve port ile eşleştirir.
 
+```c
+bind(server_fd, (struct sockaddr *)&address, sizeof(address));
+```
 
+**PARAMETRELER :**
+
+1. **sockfd (server_fd) :** Hangi soket bağlanacak?
+2. **addr (&address) :** struct sockaddr_in tipindeki adres yapısı. (Fonksiyon **struct sockaddr\***)
 
 
 
